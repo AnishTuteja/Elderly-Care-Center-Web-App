@@ -1,0 +1,24 @@
+<% layout('layouts/boilerplate') %>
+
+
+<h1 class="display-6 text-center mb-3">Eldery Care Foundation</h1>
+<div class="col-md-6 offset-md-3 col-xl-4 offset-xl-4">
+    <div class="card shadow">
+        <div class="card-header text-center">Log in to Elderly Care Foundation</div>
+        <div class="card-body">
+            <form action="/login" method="POST" class="needs-validation d-flex flex-column" novalidate>
+                <div class="mb-3">
+                    <input type="text" class="form-control" id="username" name="username" placeholder="Username" autofocus required>
+                    <div class="valid-feedback">Looks Good!</div>
+                    <div class="invalid-feedback">Please enter a valid username</div>
+                </div>
+                <div class="mb-3">
+                    <input type="password" class="form-control" id="password" name="password" placeholder="Password" required>
+                    <div class="valid-feedback">Looks Good!</div>
+                    <div class="invalid-feedback">Plase enter a strong password</div>
+                </div>
+                <button class="btn btn-primary mx-auto mb-3 px-5">Login</button>
+            </form>
+        </div>
+    </div>
+</div>

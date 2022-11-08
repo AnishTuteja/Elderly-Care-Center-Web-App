@@ -1,0 +1,33 @@
+<% layout('layouts/boilerplate') %>
+
+<div class="row">
+    <h1 class="display-6 text-center">Become a member of the Eldery Care Foundation</h1>
+    <div class="offset-md-3 col-md-6">
+        <div class="card shadow">
+            <div class="card-header text-center">Sign Up</div>
+            <div class="card-body">
+                <form action="/signup" method="POST" class="needs-validation d-flex flex-column" novalidate>
+                    <div class="mb-3">
+                        <label class="form-label" for="username">Username</label>
+                        <input type="text" class="form-control" id="username" name="username" placeholder="Username" required autofocus>
+                        <div class="valid-feedback">Looks Good!</div>
+                        <div class="invalid-feedback">Please enter a valid username</div>
+                    </div>
+                    <div class="mb-3">
+                        <label for="email" class="form-label">Email ID</label>
+                        <input type="email" class="form-control" id="email" name="email" placeholder="Email ID" required>
+                        <div class="valid-feedback">Looks Good!</div>
+                        <div class="invalid-feedback">Please enter a valid email ID</div>
+                    </div>
+                    <div class="mb-3">
+                        <label for="password" class="form-label">Password <span class="text-muted blockquote-footer">Secured with <cite title="Source Title">Passport</cite></span> </label>
+                        <input type="password" class="form-control" id="password" name="password" placeholder="Password" required>
+                        <div class="valid-feedback">Looks Good!</div>
+                        <div class="invalid-feedback">Plase enter a strong password</div>
+                    </div>
+                    <button class="btn btn-primary mx-auto mb-3 px-5">Sign Up</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

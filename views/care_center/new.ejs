@@ -1,0 +1,51 @@
+<% layout('layouts/boilerplate') %>
+<div class="row">
+    <h1 class="display-6 mb-3">Register a New Care Center</h1>
+    <div class="col-md-6">
+        <form action="/care_center" method="POST" class="d-flex flex-column needs-validation" enctype="multipart/form-data" novalidate>
+            <div class="mb-3">
+                <label for="title" class="form-label">Enter care centers title</label>
+                <input type="text" class="form-control" id="title" name="title" required>
+                <div class="valid-feedback">Looks Good!</div>
+                <div class="invalid-feedback">Please enter a valid title</div>
+            </div>
+            <div class="mb-3">
+                <label for="location" class="form-label">Enter care center location</label>
+                <input type="text" class="form-control" id="location" name="location" required>
+                <div class="valid-feedback">Looks Good!</div>
+                <div class="invalid-feedback">Please enter a valid location</div>
+            </div>
+            <div class="mb-3">
+                <label for="image" class="form-label">Upload Care Center images</label>
+                <input type="file" name="image" id="image" class="form-control" multiple>
+            </div>
+            <div class="mb-3">
+                <label for="price" class="form-label">Care center Price </label>
+                <div class="input-group">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" id="basic-addon1">$</span>
+                    </div>
+                    <input type="text" class="form-control" id="price" name="price" placeholder="0.00" aria-label="price" aria-deescibedby="price-label" required>
+                    <div class="valid-feedback">Looks Good!</div>
+                    <div class="invalid-feedback">Please enter a valid price</div>
+                </div>
+            </div>
+
+            <div class="mb-3">
+                <label for="description" class="form-label">Description</label>
+                <textarea type="text" class="form-control" id="description" name="description" required></textarea>
+                <div class="valid-feedback">Looks Good!</div>
+                <div class="invalid-feedback">Please enter a valid description</div>
+            </div>
+            <button class="btn btn-outline-success mx-auto">Create Center</button>
+        </form>
+    </div>
+    <div class="col d-none d-md-block">
+        <img src="/helpimage.png" alt="" class="img-fluid">
+    </div>
+</div>
+<a href="/care_center" class="btn btn-outline-secondary my-3 ">
+    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-left-short" viewBox="0 0 16 16">
+        <path fill-rule="evenodd" d="M12 8a.5.5 0 0 1-.5.5H5.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L5.707 7.5H11.5a.5.5 0 0 1 .5.5z" />
+    </svg> All care centers
+</a>
