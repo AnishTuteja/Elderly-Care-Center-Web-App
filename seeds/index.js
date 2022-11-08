@@ -5,11 +5,7 @@ const Care_center = require('../models/care_center');
 require('dotenv').config();
 const db_url = process.env.DB_URL;
 
-mongoose.connect(db_url,
-    (err) => {
-        if (err) console.log(err)
-        else console.log("mongdb is connected");
-    });
+mongoose.connect(db_url);
 
 const db = mongoose.connection;
 
