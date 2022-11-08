@@ -2,11 +2,14 @@ const mongoose = require('mongoose');
 const cities = require('./indian_cities');
 const { places, descriptors } = require('./seedHelpers');
 const Care_center = require('../models/care_center');
+require('dotenv').config();
+const db_url = process.env.DB_URL;
 
-mongoose.connect('mongodb://localhost:27017/elderly_care', {
-    useNewUrlParser: true,
-    useUnifiedTopology: true
-});
+mongoose.connect(db_url,
+    (err) => {
+        if (err) console.log(err)
+        else console.log("mongdb is connected");
+    });
 
 const db = mongoose.connection;
 
@@ -25,7 +28,7 @@ const seedDB = async () => {
         const price = Math.floor(Math.random() * 20) + 10;
         const care_center = new Care_center({
             geometry: { type: 'Point', coordinates: [cities[random1000].longitude, cities[random1000].latitude] },
-            owner: '6365cedb2d0ab1554456d921',
+            owner: '636a06f5be1ea72f92229099',
             location: `${cities[random1000].city}, ${cities[random1000].state}`,
             title: `${sample(descriptors)} ${sample(places)}`,
             images: [
