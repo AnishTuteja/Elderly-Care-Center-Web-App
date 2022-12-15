@@ -1,11 +1,11 @@
 <% layout('layouts/boilerplate') %>
 
 
-<h1 class="display-6 text-center mb-3">Eldery Care Foundation</h1>
+<h1 class="display-6 text-center mb-3">Elderly Care Forum</h1>
 <div class="col-md-6 offset-md-3 col-xl-4 offset-xl-4">
     <div class="card shadow">
-        <div class="card-header text-center">Log in to Elderly Care Foundation</div>
-        <div class="card-body">
+        <div class="card-header text-center">Log in to Elderly Care Forum</div>
+        <div class="card-body d-flex flex-column">
             <form action="/login" method="POST" class="needs-validation d-flex flex-column" novalidate>
                 <div class="mb-3">
                     <input type="text" class="form-control" id="username" name="username" placeholder="Username" autofocus required>
@@ -19,6 +19,7 @@
                 </div>
                 <button class="btn btn-primary mx-auto mb-3 px-5">Login</button>
             </form>
-        </div>
+            <a href="/signup" class="mx-auto"><button class="btn btn-success">Don't have an account? Sign up</button>
+        </div></a>
     </div>
 </div>

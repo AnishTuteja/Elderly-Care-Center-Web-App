@@ -27,6 +27,7 @@ module.exports.Care_center_schema = Joi.object({
     title: Joi.string().required().escapeHTML(),
     price: Joi.number().required().min(0),
     location: Joi.string().required().escapeHTML(),
+    state: Joi.string().required(),
     description: Joi.string().required().min(10).max(1000).escapeHTML()
 });
 

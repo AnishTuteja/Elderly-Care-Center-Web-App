@@ -1,10 +1,39 @@
 <% layout('layouts/boilerplate') %>
 
-<h1 class="display-5 text-center mb-3">Welcome to Elderly Care Foundation</h1>
+<h1 class="display-5 text-center mb-3">Welcome to Elderly Care Forum</h1>
 <div id="cluster-map" class="mb-3"></div>
 
+<svg class="arrows" id="arrows">
+    <path class="a1" d="M0 0 L30 32 L60 0"></path>
+    <path class="a2" d="M0 20 L30 52 L60 20"></path>
+    <path class="a3" d="M0 40 L30 72 L60 40"></path>
+</svg>
+
+
+<div id="scroll_to"></div>
 <h1 class="display-5 text-center mb-3">All Care Centers</h1>
-<%  for(let care_center of care_centers) { %>
+<form class="row pb-3 justify-content-center" action="/care_center/search" method="POST">
+    <div class="col-md-6 d-flex justify-content-center">
+        <div class="px-2">
+            <select class="form-select" id="state" name="state">
+                <option selected>Show care centers in a state</option>
+                <% for(let state of states.states) { %>
+                <option name="state" value="<%= state %>"><%= state %></option>
+                <% } %>
+            </select>
+        </div>
+        <div class="px-2">
+            <button class="btn btn-primary ">Search</button>
+        </div>
+    </div>
+</form>
+
+
+
+
+<% for(let i=0; i < 10; ++i) { %>
+<% const care_center = care_centers[i] %>
+<% if(care_center) { %>
 <div class="card mb-3">
     <div class="row">
         <div class="col-md-4">
@@ -28,6 +57,12 @@
         </div>
     </div>
 </div>
+<% } else { %>
+<div class="text-center mb-3">
+    Sorry! No care centers available in the selected states
+</div>
+<% break %>
+<% } %>
 <% } %>
 
 <script>

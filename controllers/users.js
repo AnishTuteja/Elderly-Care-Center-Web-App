@@ -29,7 +29,7 @@ module.exports.signup = async (req, res, next) => {
             if (err) {
                 next(err);
             } else {
-                req.flash('success', `Welcome to Elderly Care Foundation ${new_user.username}!  You are now a registered member`);
+                req.flash('success', `Welcome to Elderly Care Forum ${new_user.username}!  You are now a registered member`);
                 res.redirect('/care_center');
             }
         })

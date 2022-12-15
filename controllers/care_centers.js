@@ -2,18 +2,28 @@ const { urlencoded } = require('express');
 const Care_center = require('../models/care_center');
 const mbxGeocoding = require('@mapbox/mapbox-sdk/services/geocoding')
 const map_box_token = process.env.MAPBOX_TOKEN;
+const states = require('../public/javascripts/states')
 const geocoder = mbxGeocoding({ accessToken: map_box_token });
+
+
+module.exports.search_result = async (req, res) => {
+    const state = req.body.state;
+    console.log(state);
+    const care_centers = await Care_center.find({ "location": { $regex: state } });
+    res.render('care_center/index', { care_centers, states });
+}
 
 module.exports.index = async (req, res) => {
     const care_centers = await Care_center.find({});
-    res.render('care_center/index', { care_centers });
+    res.render('care_center/index', { care_centers, states });
 };
 
 module.exports.render_new_form = (req, res) => {
-    res.render('care_center/new');
+    res.render('care_center/new', { states });
 };
 
 module.exports.create_care_center = async (req, res, next) => {
+    req.body.location = req.body.location.concat(", ", req.body.state);
     const geodata = await geocoder.forwardGeocode({
         query: req.body.location,
         limit: 1

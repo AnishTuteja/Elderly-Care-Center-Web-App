@@ -16,6 +16,15 @@
                 <div class="invalid-feedback">Please enter a valid location</div>
             </div>
             <div class="mb-3">
+                <label for="state" class="form-label">Enter care center state</label>
+                <select class="form-select" id="state" name="state" required>
+                    <option selected>Select State</option>
+                    <% for(let state of states.states) { %>
+                    <option name="state" value="<%= state %>"><%= state %></option>
+                    <% } %>
+                </select>
+            </div>
+            <div class="mb-3">
                 <label for="image" class="form-label">Upload Care Center images</label>
                 <input type="file" name="image" id="image" class="form-control" multiple>
             </div>

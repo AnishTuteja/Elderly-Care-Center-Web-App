@@ -14,6 +14,7 @@ router.route('/')
     .post(is_loggedin, upload.array('image'), validate_care_center, catchAsync(care_centers.create_care_center));
 
 router.get('/new', is_loggedin, care_centers.render_new_form);
+router.post('/search', care_centers.search_result);
 
 router.route('/:id')
     .get(catchAsync(care_centers.show_care_center))
