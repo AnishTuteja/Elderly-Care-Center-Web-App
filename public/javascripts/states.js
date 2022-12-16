@@ -33,4 +33,4 @@ module.exports.states = ['Andhra Pradesh',
     'Daman and Diu',
     'Delhi',
     'Lakshadweep',
-    'Puducherry'];
+    'Puducherry'].sort();

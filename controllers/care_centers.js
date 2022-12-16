@@ -2,19 +2,25 @@ const { urlencoded } = require('express');
 const Care_center = require('../models/care_center');
 const mbxGeocoding = require('@mapbox/mapbox-sdk/services/geocoding')
 const map_box_token = process.env.MAPBOX_TOKEN;
-const states = require('../public/javascripts/states')
+const states = require('../public/javascripts/states');
+const { boolean } = require('joi');
 const geocoder = mbxGeocoding({ accessToken: map_box_token });
 
-
 module.exports.search_result = async (req, res) => {
-    const state = req.body.state;
-    const care_centers = await Care_center.find({ "location": { $regex: state } });
-    res.render('care_center/index', { care_centers, states });
+    const selected_state = req.body.state;
+    if (selected_state === 'All States') {
+        res.redirect('/care_center');
+    }
+    const care_centers = await Care_center.find({ "location": { $regex: selected_state } });
+    const isFiltered = true;
+    res.render('care_center/index', { care_centers, states, isFiltered, selected_state });
 }
 
 module.exports.index = async (req, res) => {
+    let isFiltered = false;
+    const selected_state = 'All States';
     const care_centers = await Care_center.find({});
-    res.render('care_center/index', { care_centers, states });
+    res.render('care_center/index', { care_centers, states, isFiltered, selected_state });
 };
 
 module.exports.render_new_form = (req, res) => {
@@ -63,6 +69,7 @@ module.exports.render_edit_form = async (req, res) => {
 
 module.exports.update_care_center = async (req, res) => {
     const { id } = req.params;
+    req.body.state = '';
     const care_center = await Care_center.findByIdAndUpdate(id, req.body, { runValidators: true });
     care_center.images.push(...req.files.map(f => ({ url: f.path, filename: f.filename })));
     care_center.save();

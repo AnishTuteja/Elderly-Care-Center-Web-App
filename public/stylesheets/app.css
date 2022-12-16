@@ -11,7 +11,7 @@
     width: 100px;
     height: 100px;
     position: absolute;
-    left: 50%;
+    left: 15%;
     margin: auto;
     bottom: 20px;
 }
@@ -19,7 +19,7 @@
 .arrows path {
     stroke: white;
     fill: transparent;
-    stroke-width: 5px;
+    stroke-width: 12px;
     animation: arrow 2s infinite;
     -webkit-animation: arrow 2s infinite;
 }
