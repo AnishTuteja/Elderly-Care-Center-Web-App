@@ -8,7 +8,6 @@ const geocoder = mbxGeocoding({ accessToken: map_box_token });
 
 module.exports.search_result = async (req, res) => {
     const state = req.body.state;
-    console.log(state);
     const care_centers = await Care_center.find({ "location": { $regex: state } });
     res.render('care_center/index', { care_centers, states });
 }
